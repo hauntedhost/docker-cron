@@ -23,7 +23,7 @@ services:
   cron:
     image: ghcr.io/wikiteq/cron
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./logs/cron:/var/log/cron
     environment:
       - COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME}
@@ -34,12 +34,14 @@ services:
     build: ./app
     container_name: app
     labels:
-      - cron.mytask.schedule="* * * * *"
-      - cron.mytask.command="/usr/local/bin/app_script.sh"
-      - cron.another_task.schedule="*/2 * * * *"
-      - cron.another_task.command="/usr/local/bin/another_app_script.sh"
+      cron.mytask.schedule: "* * * * *"
+      cron.mytask.command: "/usr/local/bin/app_script.sh"
+      cron.another_task.schedule: "*/2 * * * *"
+      cron.another_task.command: "/usr/local/bin/another_app_script.sh"
 ```
 This example shows how to schedule multiple cron jobs using cron syntax. The Docker container will run `/usr/local/bin/app_script.sh` every minute and `/usr/local/bin/another_app_script.sh` every two minutes, with logs stored in `/var/log/cron/`.
+
+> **Note:** Ensure to mount the Docker socket (read-only mode) in your `docker-compose.yml` file to allow for proper interaction with Docker.
 
 ### Environment Variables
 The `example_compose.yml` file uses several environment variables. Make sure to define these in a `.env` file in the root directory of your project:
