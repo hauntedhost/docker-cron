@@ -1,3 +1,7 @@
+timestamp() {
+  date -u "+%Y-%m-%d %H:%M:%S %Z"
+}
+
 isTrue() {
     case $1 in
         "True" | "TRUE" | "true" | 1)
@@ -11,6 +15,6 @@ isTrue() {
 
 log() {
   if isTrue "$DEBUG"; then
-    echo "$(timestamp)" "$@"
+    echo "$(timestamp) |" "$@"
   fi
 }
