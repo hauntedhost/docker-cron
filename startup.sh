@@ -13,7 +13,7 @@ fi
 if isTrue "$DEBUG"; then
     supercronic -debug -inotify /root/crontab &
 else
-    supercronic -passthrough-logs -inotify /root/crontab &
+    supercronic -quiet -inotify /root/crontab &
 fi
 
 # Function to update cron jobs based on container labels
