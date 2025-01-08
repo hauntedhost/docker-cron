@@ -17,7 +17,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: cron
+  IMAGE_NAME: docker-cron
 
 jobs:
   # Test the image Dockerfile syntax using https://github.com/replicatedhq/dockerfilelint
