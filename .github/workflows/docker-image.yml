@@ -52,7 +52,7 @@ jobs:
         run: |
 
           # Image ID
-          IMAGE_ID=ghcr.io/wikiteq/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/hauntedhost/$IMAGE_NAME
 
           # Date
           BDATE=$(date +%Y%m%d)
