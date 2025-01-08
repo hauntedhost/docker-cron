@@ -6,7 +6,7 @@ concurrency: docker_cron_main
 
 on:
   push:
-    # Only activate for `master` branch
+    # Only activate for `main` branch
     branches:
       - main
     # Plus for all tags
