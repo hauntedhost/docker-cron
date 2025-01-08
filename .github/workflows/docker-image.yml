@@ -8,7 +8,7 @@ on:
   push:
     # Only activate for `master` branch
     branches:
-      - master
+      - main
     # Plus for all tags
     tags:
       - '*'
